@@ -1,6 +1,7 @@
 package diegovscoelho.todo.services;
 
 import diegovscoelho.todo.entities.Task;
+import diegovscoelho.todo.entities.User;
 import diegovscoelho.todo.repositories.TaskRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,14 @@ public class TaskService {
 
     public Optional<Task> getTaskById(Long id) {
         return repository.findById(id);
+    }
+
+    public Task createTask(Task task) {
+        return repository.save(task);
+    }
+
+    public List<Task> getTasksByUserId(Long userId) {
+        return repository.findByUserId(userId);
     }
 
     public Task updateTask(Long id, Task taskDetails) {
